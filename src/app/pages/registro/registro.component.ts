@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UsuarioModel } from 'src/app/models/usuario';
 import { NgForm } from '@angular/forms';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })
-export class RegistroComponent implements OnInit {
+export class RegistroComponent implements OnInit, OnDestroy {
+  private subscription: Subscription;
 
   usuario: UsuarioModel;
 
@@ -18,11 +20,15 @@ export class RegistroComponent implements OnInit {
     this.usuario = new UsuarioModel();
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
   onSubmit(form: NgForm) {
 
     if (form.invalid) {return; }
 
-    this.usuarioService.novoUsuario(this.usuario)
+    this.subscription = this.usuarioService.novoUsuario(this.usuario)
       .subscribe(resposta => {
         console.log(resposta);
       }, err => {
