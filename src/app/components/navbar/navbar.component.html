@@ -9,15 +9,21 @@
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/']" routerLinkActive="router-link-active">Doar livro</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/usuario']" routerLinkActive="router-link-active">Criar usuário</a>
+      <li *ngIf="isAuthenticated()" class="nav-item">
+        <a class="nav-link" [routerLink]="['/login']" routerLinkActive="router-link-active">Retirar livro</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/login']" routerLinkActive="router-link-active">asdas</a>
+      <li *ngIf="isAuthenticated()" class="nav-item">
+        <a class="nav-link" [routerLink]="['/login']" routerLinkActive="router-link-active">Devolver livro</a>
+      </li>
+      <li *ngIf="!isAuthenticated()" class="nav-item">
+        <a class="nav-link" [routerLink]="['/usuario']" routerLinkActive="router-link-active">Criar usuário</a>
       </li>
     </ul>
     <span class="navbar-text">
-      <a class="nav-link" [routerLink]="['/login']" routerLinkActive="router-link-active">Login</a>
+      <button *ngIf="!isAuthenticated()" class="btn btn-outline-dark" [routerLink]="['/login']"
+        routerLinkActive="router-link-active">Login</button>
+      <button *ngIf="isAuthenticated()" class="btn btn-outline-dark" (click)="logout()"
+        routerLinkActive="router-link-active">Logout</button>
     </span>
   </div>
 </nav>

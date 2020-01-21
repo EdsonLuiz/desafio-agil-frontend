@@ -38,6 +38,17 @@ export class LoginService {
     this.storage.setLocalUser(user);
   }
 
+  isAuthenticated(): boolean {
+    const userFromLocalStorage = this.storage.getLocalUser();
+    if (userFromLocalStorage === null) {
+      return false;
+    } else {
+      const isNotExpired = !this.jwtHelper.isTokenExpired(userFromLocalStorage.token);
+      const hasToken = userFromLocalStorage.token !== null;
+      return hasToken && isNotExpired;
+    }
+  }
+
   logout() {
     this.storage.setLocalUser(null);
   }
