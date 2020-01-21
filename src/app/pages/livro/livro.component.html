@@ -1,1 +1,19 @@
-<p>livro works!</p>
+<table class="table mt-4">
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Autor</th>
+      <th>Ano</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let livro of livros">
+      <td>{{livro.titulo}}</td>
+      <td>{{livro.autor}}</td>
+      <td>{{livro.anoPublicado}}</td>
+      <td>{{livro.status}}</td>
+    </tr>
+  </tbody>
+</table>
