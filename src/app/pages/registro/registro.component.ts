@@ -3,6 +3,7 @@ import { UsuarioModel } from 'src/app/models/usuario';
 import { NgForm } from '@angular/forms';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -14,7 +15,7 @@ export class RegistroComponent implements OnInit, OnDestroy {
 
   usuario: UsuarioModel;
 
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(private usuarioService: UsuarioService, private router: Router) { }
 
   ngOnInit() {
     this.usuario = new UsuarioModel();
@@ -32,7 +33,7 @@ export class RegistroComponent implements OnInit, OnDestroy {
 
     this.subscription = this.usuarioService.novoUsuario(this.usuario)
       .subscribe(resposta => {
-        console.log(resposta);
+        this.router.navigateByUrl('/');
       }, err => {
         console.log(err.error.error);
       });
