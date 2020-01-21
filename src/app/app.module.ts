@@ -9,6 +9,7 @@ import { RegistroComponent } from './pages/registro/registro.component';
 import { LivroComponent } from './pages/livro/livro.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './pages/login/login.component';
+import { DoarComponent } from './pages/livro/doar/doar.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { LoginComponent } from './pages/login/login.component';
     RegistroComponent,
     LivroComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    DoarComponent
   ],
   imports: [
     BrowserModule,

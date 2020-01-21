@@ -1,0 +1,38 @@
+<div class="mx-auto" style="width: 600px;">
+  <h1>Doar um livro</h1>
+
+
+  <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+
+    <div class="form-group">
+      <label for="titulo">Título do livro:</label>
+      <input class="form-control" [ngClass]="{'is-invalid':form.submitted && form.controls['titulo'].errors}"
+        [(ngModel)]="livroFomrDTO.titulo" required minlength="4" type="text" id="titulo" name="titulo">
+      <div class="invalid-feedback">
+        Preencha o título corretamente.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="autor">Autor do livro:</label>
+      <input class="form-control" [ngClass]="{'is-invalid':form.submitted && form.controls['autor'].errors}"
+        [(ngModel)]="livroFomrDTO.autor" required minlength="4" type="text" id="autor" name="autor">
+      <div class="invalid-feedback">
+        Preencha o nome do autor corretamente.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="anoPublicado">Ano da publicação</label>
+      <input class="form-control" [ngClass]="{'is-invalid':form.submitted && form.controls['anoPublicado'].errors}"
+        [(ngModel)]="livroFomrDTO.anoPublicado" required minlength="4" maxlength="4" type="number" id="anoPublicado"
+        name="anoPublicado">
+      <div class="invalid-feedback">
+        Preencha o ano corretamente.
+      </div>
+    </div>
+
+    <br>
+    <input class="btn btn-primary" type="submit" value="Confirmar doação">
+  </form>
+</div>
