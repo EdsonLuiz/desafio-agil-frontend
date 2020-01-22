@@ -22,4 +22,8 @@ export class LivroService {
 
     return this.http.post(`${API_CONFIG.baseURL}/livros`, requestBody);
   }
+
+  listAllAvailableBooks(): Observable<LivroDTO[]> {
+    return this.http.get<LivroDTO[]>(`${API_CONFIG.baseURL}/livros/disponivel`);
+  }
 }
