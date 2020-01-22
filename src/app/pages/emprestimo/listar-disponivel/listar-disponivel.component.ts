@@ -11,7 +11,7 @@ import { LivroService } from 'src/app/services/livro.service';
 export class ListarDisponivelComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription;
-  private livros: LivroDTO[];
+  livros: LivroDTO[];
 
 
   constructor(private livroService: LivroService) { }

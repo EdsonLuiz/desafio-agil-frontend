@@ -10,7 +10,7 @@ import { LivroDTO } from 'src/app/models/livro.dto';
 })
 export class LivroComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
-  private livros: LivroDTO[];
+  livros: LivroDTO[];
 
   constructor(private livroService: LivroService) { }
 
