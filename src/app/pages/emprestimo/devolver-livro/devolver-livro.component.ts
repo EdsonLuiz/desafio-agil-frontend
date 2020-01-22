@@ -25,6 +25,17 @@ export class DevolverLivroComponent implements OnInit, OnDestroy {
     }
   }
 
+  returnBorrowedBook(emprestimoId: number) {
+    this.subscription.push(
+      this.emprestimoService.updateBorrow(emprestimoId)
+        .subscribe(response => {
+          this.emprestimos = this.emprestimos.filter(emprestimo => emprestimo.id !== emprestimoId);
+        }, err => {
+          console.log(err);
+        })
+    );
+  }
+
   getEmprestimos() {
     this.subscription.push(
       this.emprestimoService.getAllBooksOfLoggedUser()
