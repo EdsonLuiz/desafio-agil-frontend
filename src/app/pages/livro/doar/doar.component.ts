@@ -27,7 +27,9 @@ export class DoarComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   onSubmit(form: NgForm) {
