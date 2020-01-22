@@ -1,0 +1,22 @@
+<h1>Livros disponíveis para devolução</h1>
+<table class="table mt-4">
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Autor</th>
+      <th>Ano</th>
+      <th>Ação</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let emprestimo of emprestimos">
+      <td>{{emprestimo.livro.titulo}}</td>
+      <td>{{emprestimo.livro.autor}}</td>
+      <td>{{emprestimo.livro.anoPublicado}}</td>
+      <td>
+        <button (click)="returnBook(emprestimo.id)" class="btn btn-outline-danger">devolver</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

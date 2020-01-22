@@ -10,6 +10,7 @@ import { DoarComponent } from './pages/livro/doar/doar.component';
 import { LivroComponent } from './pages/livro/livro.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
+import { DevolverLivroComponent } from './pages/emprestimo/devolver-livro/devolver-livro.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { RegistroComponent } from './pages/registro/registro.component';
     LoginComponent,
     DoarComponent,
     ListarDisponivelComponent,
+    DevolverLivroComponent,
   ],
   imports: [
     BrowserModule,

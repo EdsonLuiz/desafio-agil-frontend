@@ -13,7 +13,8 @@
         <a class="nav-link" [routerLink]="['/emprestimo']" routerLinkActive="router-link-active">Retirar livro</a>
       </li>
       <li *ngIf="isAuthenticated()" class="nav-item">
-        <a class="nav-link" [routerLink]="['/login']" routerLinkActive="router-link-active">Devolver livro</a>
+        <a class="nav-link" [routerLink]="['/emprestimo/devolver']" routerLinkActive="router-link-active">Devolver
+          livro</a>
       </li>
       <li *ngIf="!isAuthenticated()" class="nav-item">
         <a class="nav-link" [routerLink]="['/usuario']" routerLinkActive="router-link-active">Criar usuário</a>
