@@ -6,6 +6,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { DoarComponent } from './pages/livro/doar/doar.component';
 import { ListarDisponivelComponent } from './pages/emprestimo/listar-disponivel/listar-disponivel.component';
 import { DevolverLivroComponent } from './pages/emprestimo/devolver-livro/devolver-livro.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [
@@ -13,8 +14,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'registro', component: RegistroComponent},
   {path: 'livro/doar', component: DoarComponent},
-  {path: 'emprestimo', component: ListarDisponivelComponent},
-  {path: 'emprestimo/devolver', component: DevolverLivroComponent},
+  {path: 'emprestimo', component: ListarDisponivelComponent, canActivate:[AuthGuard]},
+  {path: 'emprestimo/devolver', component: DevolverLivroComponent, canActivate:[AuthGuard]},
   {path: '**', redirectTo: 'registro'}
 ];
 
