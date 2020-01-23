@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { EmprestimoDTO } from 'src/app/models/emprestimo.dto';
 import { Subscription } from 'rxjs';
 import { EmprestimoService } from 'src/app/services/emprestimo.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-devolver-livro',
@@ -13,7 +14,8 @@ export class DevolverLivroComponent implements OnInit, OnDestroy {
   private subscription: Subscription[] = [];
   emprestimos: EmprestimoDTO[] = [];
 
-  constructor(private emprestimoService: EmprestimoService) { }
+  constructor(private emprestimoService: EmprestimoService,
+              private toastService: ToastService) { }
 
   ngOnInit() {
     this.getEmprestimos();
@@ -29,6 +31,7 @@ export class DevolverLivroComponent implements OnInit, OnDestroy {
     this.subscription.push(
       this.emprestimoService.updateBorrow(emprestimoId)
         .subscribe(response => {
+          this.toastService.showToast('success', `Livro ${response.livro.titulo} devolvido.`);
           this.emprestimos = this.emprestimos.filter(emprestimo => emprestimo.id !== emprestimoId);
         }, err => {
           console.log(err);
