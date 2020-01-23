@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: 'livro/doar', component: DoarComponent},
   {path: 'emprestimo', component: ListarDisponivelComponent, canActivate:[AuthGuard]},
   {path: 'emprestimo/devolver', component: DevolverLivroComponent, canActivate:[AuthGuard]},
-  {path: '**', redirectTo: 'registro'}
+  {path: '**', redirectTo: '/'}
 ];
 
 @NgModule({
