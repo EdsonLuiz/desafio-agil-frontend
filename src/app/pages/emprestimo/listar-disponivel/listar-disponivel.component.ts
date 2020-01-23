@@ -4,6 +4,7 @@ import { LivroDTO } from 'src/app/models/livro.dto';
 import { LivroService } from 'src/app/services/livro.service';
 import { EmprestimoService } from 'src/app/services/emprestimo.service';
 import { Router } from '@angular/router';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-listar-disponivel',
@@ -18,6 +19,7 @@ export class ListarDisponivelComponent implements OnInit, OnDestroy {
 
   constructor(private livroService: LivroService,
               private emprestimoService: EmprestimoService,
+              private toastService: ToastService,
               private router: Router) { }
 
   ngOnInit() {
@@ -38,10 +40,10 @@ export class ListarDisponivelComponent implements OnInit, OnDestroy {
   }
 
   borrowBook(bookid: number) {
-    console.log(bookid);
     this.subscription.push(
       this.emprestimoService.store(bookid)
         .subscribe(response => {
+          this.toastService.showToast('success', `Livro ${response.livro.titulo} retirado.`);
           this.livros = this.livros.filter(l => l.numero !== bookid);
         }, err => {
           console.log(err.error.error);
