@@ -28,8 +28,8 @@ export class EmprestimoService {
     );
   }
 
-  updateBorrow(emprestimoId: number) {
-    return this.http.put(
+  updateBorrow(emprestimoId: number): Observable<EmprestimoDTO> {
+    return this.http.put<EmprestimoDTO>(
       `${API_CONFIG.baseURL}/emprestimos/${emprestimoId}`,
       {},
       {headers: this.getAuthHeader()}
