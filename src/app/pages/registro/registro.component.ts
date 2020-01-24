@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
@@ -33,8 +34,19 @@ export class RegistroComponent implements OnInit, OnDestroy {
 
     this.subscription = this.usuarioService.novoUsuario(this.usuario)
       .subscribe(resposta => {
-        this.router.navigateByUrl('/');
+        Swal.fire({
+          title: 'Sucesso!',
+          text: 'Usuário criado!',
+          icon: 'success',
+          confirmButtonText: 'Ver livros'
+        }).then(_ => this.router.navigateByUrl('/'));
       }, err => {
+        Swal.fire({
+          title: 'Falhou!',
+          text: 'Tente registrar novamente!',
+          icon: 'error',
+          confirmButtonText: 'Tentar novamente'
+        });
         console.log(err.error.error);
       });
   }
