@@ -1,5 +1,5 @@
 export class UsuarioModel {
-  nomeCompleto: String;
-  email: String;
-  password: String
+  nomeCompleto: string;
+  email: string;
+  password: string;
 }
