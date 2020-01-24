@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UsuarioModel } from '../models/usuario';
 import { LocalUser } from '../models/localUser';
@@ -9,6 +9,7 @@ import { JwtHelperService } from "@auth0/angular-jwt";
   providedIn: 'root'
 })
 export class LoginService {
+  static userIsLogged = new EventEmitter<string>();
 
   jwtHelper: JwtHelperService = new JwtHelperService();
 
@@ -36,6 +37,7 @@ export class LoginService {
       username: this.jwtHelper.decodeToken(token).sub
     };
     this.storage.setLocalUser(user);
+    LoginService.userIsLogged.emit(user.username);
   }
 
   isAuthenticated(): boolean {

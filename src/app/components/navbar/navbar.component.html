@@ -9,21 +9,22 @@
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/livro/doar']" routerLinkActive="router-link-active">Doar livro</a>
       </li>
-      <li *ngIf="isAuthenticated()" class="nav-item">
+      <li *ngIf="isAuth" class="nav-item">
         <a class="nav-link" [routerLink]="['/emprestimo']" routerLinkActive="router-link-active">Retirar livro</a>
       </li>
-      <li *ngIf="isAuthenticated()" class="nav-item">
+      <li *ngIf="isAuth" class="nav-item">
         <a class="nav-link" [routerLink]="['/emprestimo/devolver']" routerLinkActive="router-link-active">Devolver
           livro</a>
       </li>
-      <li *ngIf="!isAuthenticated()" class="nav-item">
+      <li *ngIf="!isAuth" class="nav-item">
         <a class="nav-link" [routerLink]="['/registro']" routerLinkActive="router-link-active">Criar usuário</a>
       </li>
     </ul>
     <span class="navbar-text">
-      <button *ngIf="!isAuthenticated()" class="btn btn-outline-dark" [routerLink]="['/login']"
+      <span *ngIf="isAuth" class="mr-5">{{userName}}</span>
+      <button *ngIf="!isAuth" class="btn btn-outline-dark" (click)="login()"
         routerLinkActive="router-link-active">Login</button>
-      <button *ngIf="isAuthenticated()" class="btn btn-outline-dark" (click)="logout()"
+      <button *ngIf="isAuth" class="btn btn-outline-dark" (click)="logout()"
         routerLinkActive="router-link-active">Logout</button>
     </span>
   </div>
